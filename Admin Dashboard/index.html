@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body>
+	<div class="container">
+		<div class="navigation">
+			<ul>
+				<li>
+					<a href="#">
+						<span class="icon"><ion-icon name="logo-apple"></ion-icon> </span>
+						<span class="title" style="font-size: 1.5em;font-weight: 500;">Apple</span>
+					</a>
+				</li>
+				<li class="hovered">
+					<a href="#">
+						<span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+						<span class="title">Dashboard</span>
+					</a>
+				</li>
+				<li>
+					<a href="form.html">
+						<span class="icon"><ion-icon name="browsers"></ion-icon></span>
+						</span>
+						<span class="title">Form</span>
+					</a>
+				</li>
+				<li>
+					<a href="table.html">
+						<span class="icon"><ion-icon name="tablet-portrait-sharp"></ion-icon></span>
+						<span class="title">Table</span>
+					</a>
+				</li>
+				<li>
+					<a href="chart.html">
+						<span class="icon"><ion-icon name="stats-chart"></ion-icon></span>
+						<span class="title">Chart</span>
+					</a>
+				</li>
+				<li>
+					<a href="icons.html">
+						<span class="icon"><ion-icon name="beer"></ion-icon></span>
+						<span class="title">Icons</span>
+					</a>
+				</li>
+				<li>
+					<a href="calender.html">
+						<span class="icon"><ion-icon name="calendar-number"></ion-icon></span>
+						<span class="title">Calender</span>
+					</a>
+				</li>
+				<!-- <li>
+					<a href="#">
+						<span class="icon"><ion-icon name="people-circle"></ion-icon></span>
+						<span class="title">User</span>
+					</a>
+				</li> -->
+				<li>
+					<a href="page.html">
+						<span class="icon"><ion-icon name="create"></ion-icon></span>
+						<span class="title">Pages</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="setting.html">
+						<span class="icon"><ion-icon name="settings"></ion-icon></span>
+						<span class="title">Settings</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+						<span class="title">Sign Out</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- main -->
+		<div class="main">
+			<div class="topbar">
+				<div class="toggle">
+					<ion-icon name="menu-outline"></ion-icon>
+				</div>
+				<!-- search -->
+				<div class="search">
+					<label>
+						<input type="text" placeholder="Search here">
+						<ion-icon name="search-outline"></ion-icon>
+					</label>
+				</div>
+				<!-- userImg -->
+				<div class="user">
+					<img src="./assets/image/admin.jpg">
+				</div>
+			</div>
+
+			<!-- cards -->
+			<div class="cardBox">
+				<div class="card">
+					<div>
+						<div class="numbers count">1,504</div>
+						<div class="cardName">Daily Views</div>
+					</div>
+					<div class="iconBx">
+						<ion-icon name="eye-outline"></ion-icon>
+					</div>
+				</div>
+				<div class="card">
+					<div>
+						<div class="numbers count">80</div>
+						<div class="cardName">Sales</div>
+					</div>
+					<div class="iconBx">
+						<ion-icon name="cart-outline"></ion-icon>
+					</div>
+				</div>
+				<div class="card">
+					<div>
+						<div class="numbers count">284</div>
+						<div class="cardName">Comments</div>
+					</div>
+					<div class="iconBx">
+						<ion-icon name="chatbubbles-outline"></ion-icon>
+					</div>
+				</div>
+				<div class="card">
+					<div>
+						<div class="numbers count">$7,842</div>
+						<div class="cardName">Earning</div>
+					</div>
+					<div class="iconBx">
+						<ion-icon name="cash-outline"></ion-icon>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Add Charts -->
+			<div class="graphBox">
+				<div class="box">
+					<canvas id="myChart"></canvas>
+				</div>
+				<div class="box">
+					<canvas id="earning"></canvas>
+				</div>
+			</div>
+
+
+			<!-- Data -->
+			<div class="details">
+				<!-- order details list -->
+				<div class="recentOrders">
+					<div class="cardHeader">
+						<h2>Recent Orders</h2>
+						<a href="#" class="btn">View All</a>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<td>Name</td>
+								<td>Price</td>
+								<td>Payment</td>
+								<td>Status</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Star Refrigerator</td>
+								<td>$1200</td>
+								<td>Paid</td>
+								<td><span class="status delivered">Delivered</span></td>
+							</tr>
+							<tr>
+								<td>Window Coolers</td>
+								<td>$110</td>
+								<td>Due</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>Speakers</td>
+								<td>$620</td>
+								<td>Paid</td>
+								<td><span class="status return">Return</span></td>
+							</tr>
+							<tr>
+								<td>Hp Laptop</td>
+								<td>$110</td>
+								<td>Due</td>
+								<td><span class="status inprogress">In Progress</span></td>
+							</tr>
+							<tr>
+								<td>Apple Watch</td>
+								<td>$1200</td>
+								<td>Paid</td>
+								<td><span class="status delivered">Delivered</span></td>
+							</tr>
+							<tr>
+								<td>Wall Fan</td>
+								<td>$110</td>
+								<td>Paid</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>Adidas Shoes</td>
+								<td>$620</td>
+								<td>Paid</td>
+								<td><span class="status return">Return</span></td>
+							</tr>
+							<tr>
+								<td>Denim Shirts</td>
+								<td>$110</td>
+								<td>Due</td>
+								<td><span class="status inprogress">In Progress</span></td>
+							</tr>
+							<tr>
+								<td>Casual Shoes</td>
+								<td>$575</td>
+								<td>Paid</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>Wall Fan</td>
+								<td>$110</td>
+								<td>Paid</td>
+								<td><span class="status pending">Pending</span></td>
+							</tr>
+							<tr>
+								<td>Denim Shirts</td>
+								<td>$110</td>
+								<td>Due</td>
+								<td><span class="status inprogress">In Progress</span></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+				</div>
+
+			</div>
+			<!-- MAP -->
+			<!-- insert map -->
+			<!-- using a responsive iframe -->
+			<div class="responsive-map-container">
+				<!-- place the iframe code between here... -->
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1737.6221882978507!2d-98.48650795000005!3d29.421653200000023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865c58aa57e6a56f%3A0xf08a9ad66f03e879!2sHenry+B.+Gonzalez+Convention+Center!5e0!3m2!1sen!2sus!4v1393884854786"
+					width="600" height="450" frameborder="0" style="border:0"></iframe>
+				<!-- ... and here -->
+			</div>
+			<!-- /insert map -->
+		</div>
+	</div>
+
+
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+	<script src="./js/my_chart.js"></script>
+	<script>
+		// MenuToggle
+		let toggle = document.querySelector('.toggle');
+		let navigation = document.querySelector('.navigation');
+		let main = document.querySelector('.main');
+
+		toggle.onclick = function () {
+			navigation.classList.toggle('active');
+			main.classList.toggle('active');
+		}
+
+		// add hovered class in selected list item
+		let list = document.querySelectorAll('.navigation li');
+		function activeLink() {
+			list.forEach((item) =>
+				item.classList.remove('hovered'));
+			this.classList.add('hovered');
+		}
+		list.forEach((item) =>
+			item.addEventListener('mouseover', activeLink));
+
+
+		document.addEventListener("DOMContentLoaded", function () {
+			// Function to animate the counter
+			function animateCounter(element, start, end, duration) {
+				let startTime = null;
+
+				function updateCounter(timestamp) {
+					if (!startTime) startTime = timestamp;
+					const progress = timestamp - startTime;
+					const current = Math.min(Math.floor((progress / duration) * (end - start) + start), end);
+
+					// Update the inner HTML of the element
+					element.innerHTML = current.toLocaleString(); // Format with commas
+
+					if (progress < duration) {
+						requestAnimationFrame(updateCounter);
+					}
+				}
+
+				requestAnimationFrame(updateCounter);
+			}
+
+			// Counter values
+			const counters = [
+				{ element: document.querySelectorAll('.count')[0], start: 0, end: 1504, duration: 2000 },
+				{ element: document.querySelectorAll('.count')[1], start: 0, end: 80, duration: 2000 },
+				{ element: document.querySelectorAll('.count')[2], start: 0, end: 284, duration: 2000 },
+				{ element: document.querySelectorAll('.count')[3], start: 0, end: 7842, duration: 2000 }
+			];
+
+			// Start the counter animations
+			counters.forEach(counter => {
+				animateCounter(counter.element, counter.start, counter.end, counter.duration);
+			});
+		});
+
+
+	</script>
+
+</body>
+
+</html>

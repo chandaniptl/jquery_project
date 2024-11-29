@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <style>
+        .grid {
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+        }
+    </style>
+</head>
+
+<body class="container">
+
+    <main>
+        <h1>Product</h1>
+        <div class="grid">
+            <div class="filters">
+                <label for="brand">Brand:</label>
+                <select id="brand">
+                    <option value="">All</option>
+                    <option value="Brand A">IPhone 11</option>
+                    <option value="Brand B">IPhone 14</option>
+                    <option value="Brand C">IPhone 16</option>
+                </select>
+
+                <label for="price">Price Range:</label>
+                <select id="price">
+                    <option value="">All</option>
+                    <option value="0-100">$0 - $100</option>
+                    <option value="100-200">$100 - $200</option>
+                    <option value="200-500">$200 - $500</option>
+                    <option value="500">$500+</option>
+                </select>
+            </div>
+
+            <table id="purifierTable">
+                <thead>
+                    <tr>
+                        <th>Brand Name</th>
+                        <th>Model</th>
+                        <th>Price</th>
+                        <th>Capacity</th>
+                        <th>Stages</th>
+                        <th>Warranty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>IPhone 11</td>
+                        <td>Model 1</td>
+                        <td>$150</td>
+                        <td>10 L/hr</td>
+                        <td>5</td>
+                        <td>1 year</td>
+                    </tr>
+                    <tr>
+                        <td>IPhone 14</td>
+                        <td>Model 2</td>
+                        <td>$200</td>
+                        <td>15 L/hr</td>
+                        <td>6</td>
+                        <td>2 years</td>
+                    </tr>
+                    <tr>
+                        <td>IPhone 16</td>
+                        <td>Model 3</td>
+                        <td>$120</td>
+                        <td>8 L/hr</td>
+                        <td>4</td>
+                        <td>1 year</td>
+                    </tr>
+                    <tr>
+                        <td>IPhone 11</td>
+                        <td>Model 4</td>
+                        <td>$180</td>
+                        <td>12 L/hr</td>
+                        <td>5</td>
+                        <td>1 year</td>
+                    </tr>
+                    <tr>
+                        <td>IPhone 14</td>
+                        <td>Model 5</td>
+                        <td>$250</td>
+                        <td>20 L/hr</td>
+                        <td>7</td>
+                        <td>3 years</td>
+                    </tr>
+                </tbody>
+            </table>
+
+    </main>
+
+    <script>
+        // Get filter elements
+        const brandFilter = document.getElementById('brand');
+        const priceFilter = document.getElementById('price');
+        // Get table and rows
+        const table = document.getElementById('purifierTable');
+        const rows = table.getElementsByTagName('tr');
+        // Add event listeners to filters
+        brandFilter.addEventListener('change', filterTable);
+        priceFilter.addEventListener('change', filterTable);
+        // Filter table based on selected options
+        function filterTable() {
+            const selectedBrand = brandFilter.value;
+            const selectedPrice = priceFilter.value;
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const brand = row.getElementsByTagName('td')[0].textContent;
+                const price = parseFloat(row.getElementsByTagName('td')[2].textContent.replace('$', ''));
+                let brandMatch = true;
+                let priceMatch = true;
+                if (selectedBrand && brand !== selectedBrand) {
+                    brandMatch = false;
+                }
+                if (selectedPrice) {
+                    const [min, max] = selectedPrice.split('-').map(parseFloat);
+                    if (isNaN(max)) {
+                        priceMatch = price >= min;
+                    } else {
+                        priceMatch = price >= min && price <= max;
+                    }
+                }
+                if (brandMatch && priceMatch) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

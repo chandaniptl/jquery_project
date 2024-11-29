@@ -1,0 +1,29 @@
+html, body {
+	overflow: hidden;
+	height:100%;
+	width:100%;
+  }
+  
+  
+  .bg-blur {
+	backdrop-filter: blur(100px);
+  }
+  .border-effect {
+	border: 4px solid #ffffff52;
+	transition: 0.5s all;
+  }
+  .border-effect:hover {
+	border: 4px solid #ffffffb0;
+  }
+  
+  .blur-effect {
+	height: 100px;
+	width: 100px;
+	background: #2196f3;
+	border-radius: 100px;
+	filter: blur(20px);
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	z-index: -1;
+  }

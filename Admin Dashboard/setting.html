@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/setting.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="app" class="w-full h-full">
+        <div class="blur-effect"></div>
+
+        <div class="p-4 flex justify-center bg-blur">
+            <div class="w-min flex flex-row p-2 gap-2 border border-blue-500 items-center">
+                <input placeholder="Find a setting" class="bg-transparent px-4 py-2" />
+                <span class="text-blue-500 material-symbols-outlined text-xl">search</span>
+            </div>
+        </div>
+        <div class="h-full p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 z-10 bg-transparent">
+            <div v-for="item in buttons"
+                class="cursor-pointer flex flex-row p-4 gap-4 justify-items-center bg-blur border-effect">
+                <span class="text-blue-500 material-symbols-outlined text-xl">{{item.icon}}</span>
+                <div class="flex flex-col">
+                    <span class="font-bold">{{item.title}}</span>
+                    <span class="text-gray-500">{{item.sub}}</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                title: "Simple Todo List",
+                buttons: []
+            },
+            computed: {},
+            methods: {},
+            created: function () {
+
+
+                this.buttons.push({
+                    title: "System",
+                    sub: "Display, sound, notifications, power ",
+                    icon: "computer"
+                });
+                this.buttons.push({
+                    title: "Devices",
+                    sub: "Bluetooth, printers, mouse",
+                    icon: "devices"
+                });
+                this.buttons.push({
+                    title: "Phone",
+                    sub: "Link your Android, iPhone",
+                    icon: "smartphone"
+                });
+                this.buttons.push({
+                    title: "Network & Internet",
+                    sub: "Wi-Fi, airplane mode, VPN Background",
+                    icon: "wifi"
+                });
+                this.buttons.push({
+                    title: "Personalization",
+                    sub: "Background, lock screen, colors ",
+                    icon: "format_color_fill"
+                });
+                this.buttons.push({
+                    title: "Accounts",
+                    sub: "Your accounts, email, sync, work, other people ",
+                    icon: "account_circle"
+                });
+                this.buttons.push({
+                    title: "Search",
+                    sub: "Find my files, permissions ",
+                    icon: "search"
+                });
+                this.buttons.push({
+                    title: "Time & Language",
+                    sub: "Speech, region, date ",
+                    icon: "schedule"
+                });
+                this.buttons.push({
+                    title: "Privacy",
+                    sub: "Location, camera, microphone ",
+                    icon: "verified_user"
+                });
+                this.buttons.push({
+                    title: "Apps",
+                    sub: "Uninstall, defaults, optional features ",
+                    icon: "apps"
+                });
+                this.buttons.push({
+                    title: "Ease of Access",
+                    sub: "Narrator, magnifier, high contrast ",
+                    icon: "accessible"
+                });
+                this.buttons.push({
+                    title: "Update & Security",
+                    sub: "Windows Update, recovery, backup ",
+                    icon: "privacy_tip"
+                });
+
+            }
+        });
+
+        window.addEventListener("mousemove", function (e) {
+            mouseMoved(e);
+        });
+        function mouseMoved(e) {
+            let b = document.querySelector(".blur-effect");
+            b.style.top = e.y - 50 + "px";
+            b.style.left = e.x - 50 + "px";
+        }
+
+    </script>
+</body>
+
+</html>

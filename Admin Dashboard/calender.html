@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Verdana;
+            font-weight: 300;
+        }
+
+        body {
+            margin: 0;
+            background-image:url("./assets/image/background.jpg");
+        }
+
+        .container {
+            height: 100svh;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calander {
+            background-color: white;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            display: grid;
+            gap: 0.5rem;
+            cursor: default;
+            box-shadow: 0 2px 8px #00000050;
+        }
+
+        .week {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-auto-columns: 1fr;
+            grid-auto-rows: 1fr;
+            gap: 0.5rem;
+        }
+
+        .weekday {
+            text-align: center;
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            box-shadow: 0 0 8px #00000030;
+        }
+
+        .month {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: inherit;
+            background-color: #5d4c41;
+            color: white;
+        }
+
+        .month>* {
+            margin: 0;
+            text-align: center;
+        }
+
+        .month button {
+            border: none;
+            height: 3rem;
+            width: 3rem;
+            padding: 0.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 0.25rem;
+            background-color: #00000030;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 0 8px #00000030;
+        }
+
+        .days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+        }
+
+        .day {
+            box-shadow: 0 0 8px #00000030;
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: 0.25rem;
+        }
+
+        .day:hover {
+            box-shadow: inset 0 0 8px #00000030;
+        }
+
+        .year {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border-radius: inherit;
+            background-color: #5d4c41;
+            color: white;
+        }
+
+        .year>* {
+            margin: 0;
+            text-align: center;
+        }
+
+        .year button {
+            border: none;
+            height: 3rem;
+            width: 3rem;
+            padding: 0.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 0.25rem;
+            background-color: #00000030;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 0 8px #00000030;
+        }
+
+        .output {
+            background: linear-gradient(to right, #a97b55, #DEAF84);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="calander">
+            <div class="year">
+                <button> &#9664 </button>
+                <h2>2025</h2>
+                <button> &#9654 </button>
+            </div>
+            <div class="month">
+                <button> &#9664 </button>
+                <h2>January</h2>
+                <button> &#9654 </button>
+            </div>
+            <div class="week">
+                <div class="weekday">S</div>
+                <div class="weekday">M</div>
+                <div class="weekday">T</div>
+                <div class="weekday">W</div>
+                <div class="weekday">Th</div>
+                <div class="weekday">F</div>
+                <div class="weekday">Sa</div>
+            </div>
+            <div class="days">
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+                <div class="day">5</div>
+                <div class="day">6</div>
+                <div class="day">7</div>
+                <div class="day">8</div>
+                <div class="day">9</div>
+                <div class="day">10</div>
+                <div class="day">11</div>
+                <div class="day">12</div>
+                <div class="day">13</div>
+                <div class="day">14</div>
+                <div class="day">15</div>
+                <div class="day">16</div>
+                <div class="day">17</div>
+                <div class="day">18</div>
+                <div class="day">19</div>
+                <div class="day">20</div>
+                <div class="day">21</div>
+                <div class="day">22</div>
+                <div class="day">23</div>
+                <div class="day">24</div>
+                <div class="day">25</div>
+                <div class="day">26</div>
+                <div class="day">27</div>
+                <div class="day">28</div>
+                <div class="day">29</div>
+                <div class="day">30</div>
+                <div class="day">31</div>
+                <div class="day">1</div>
+                <div class="day">2</div>
+                <div class="day">3</div>
+                <div class="day">4</div>
+            </div>
+        </div>
+        <div class="output">Selected Date: </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const calendarContainer = document.querySelector(".container");
+            let currentYear = 2025; // Initial year
+            let currentMonth = 0; // January
+
+            const renderCalendar = (year, month) => {
+                // Update month and year display
+                const monthNames = [
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December"
+                ];
+                calendarContainer.querySelector(".month h2").textContent =
+                    monthNames[month];
+                calendarContainer.querySelector(".year h2").textContent = year;
+
+                // Clear previous days
+                const daysContainer = calendarContainer.querySelector(".days");
+                daysContainer.innerHTML = "";
+
+                // Calculate days of current, previous, and next months
+                const lastDayCurrentMonth = new Date(year, month + 1, 0).getDate();
+                const lastDayPrevMonth = new Date(year, month, 0).getDate();
+                const startDayOfWeek = new Date(year, month, 1).getDay();
+
+                // Display previous month's last few days if offset needed
+                for (let i = startDayOfWeek; i > 0; i--) {
+                    const dayElem = document.createElement("div");
+                    dayElem.className = "day";
+                    dayElem.textContent = lastDayPrevMonth - i + 1;
+                    dayElem.style.color = "grey";
+                    dayElem.addEventListener("click", () => navigateMonth(-1));
+                    daysContainer.appendChild(dayElem);
+                }
+
+                // Display current month days
+                for (let i = 1; i <= lastDayCurrentMonth; i++) {
+                    const dayElem = document.createElement("div");
+                    dayElem.className = "day";
+                    dayElem.textContent = i;
+                    dayElem.addEventListener("click", () => displayDate(i, month, year));
+                    daysContainer.appendChild(dayElem);
+                }
+
+                // Display next month's first few days if necessary
+                const daysDisplayed = daysContainer.children.length;
+                for (let i = 1; daysDisplayed + i <= 42; i++) {
+                    const dayElem = document.createElement("div");
+                    dayElem.className = "day";
+                    dayElem.textContent = i;
+                    dayElem.style.color = "grey";
+                    dayElem.addEventListener("click", () => navigateMonth(1));
+                    daysContainer.appendChild(dayElem);
+                }
+            };
+
+            const navigateMonth = (offset) => {
+                currentMonth += offset;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                } else if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentYear, currentMonth);
+                smoothTransition();
+            };
+
+            const navigateYear = (offset) => {
+                currentYear += offset;
+                renderCalendar(currentYear, currentMonth);
+                smoothTransition();
+            };
+
+            const displayDate = (day, month, year) => {
+                const outputBox = document.querySelector(".output");
+                outputBox.textContent = `Selected Date: ${day}-${month + 1}-${year}`;
+            };
+
+            const smoothTransition = () => {
+                const calendar = document.querySelector(".calendar");
+                calendar.style.transform = "scale(1.02)";
+                setTimeout(() => (calendar.style.transform = "scale(1)"), 200);
+            };
+
+            // Event listeners for month and year buttons
+            document
+                .querySelector(".month button:nth-child(1)")
+                .addEventListener("click", () => navigateMonth(-1));
+            document
+                .querySelector(".month button:nth-child(3)")
+                .addEventListener("click", () => navigateMonth(1));
+            document
+                .querySelector(".year button:nth-child(1)")
+                .addEventListener("click", () => navigateYear(-1));
+            document
+                .querySelector(".year button:nth-child(3)")
+                .addEventListener("click", () => navigateYear(1));
+
+            renderCalendar(currentYear, currentMonth);
+        });
+
+    </script>
+</body>
+
+</html>
